@@ -1,0 +1,77 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Nhân Viên</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+
+	<div class="container">
+        <h2 class="mb-3">Thêm Nhân Viên</h2>
+
+        <form action="#" th:action="@{/saveNhanVien}" th:object="${nhanvien}" method="POST">
+        	<label for="hoTen"><strong>Nhân viên:</strong></label>
+            <input type="text" th:field="*{hoTen}" placeholder="Họ Tên" class="form-control col-4">
+            <p style="color:red;" th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}">Full Name error</p>
+            </br>
+
+			<label for="email"><strong>Email:</strong></label>
+            <input type="email" th:field="*{email}" placeholder="Email" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+            </br>
+
+			<label for="sdt"><strong>SĐT:</strong></label>
+            <input type="text" th:field="*{sdt}" placeholder="SDT" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('sdt')}" th:errors="*{sdt}">SDT Error</p>
+            </br>
+            
+            <label for="diaChi"><strong>Địa chỉ:</strong></label>
+            <input type="text" th:field="*{diaChi}" placeholder="Địa Chỉ" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">Dia Chi Error</p>
+            </br>
+            
+            <label for="cmnd"><strong>CMND:</strong></label>
+            <input type="text" th:field="*{cmnd}" placeholder="CMND" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('cmnd')}" th:errors="*{cmnd}">CMND Error</p>
+            </br>
+            
+            <label for="taiKhoan"><strong>Tài khoản:</strong></label>
+            <input type="text" th:field="*{taiKhoan}" placeholder="Tài Khoản" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('taiKhoan')}" th:errors="*{taiKhoan}">Tai Khoan Error</p>
+            </br>
+            
+            <label for="matKhau"><strong>Mật khẩu:</strong></label>
+            <input type="password" th:field="*{matKhau}" placeholder="Mật Khẩu" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}">Mat Khau Error</p>
+            </br>
+            
+<!--             <label for="maQuyen"><strong>Quyền:</strong></label> -->
+<!--             <select th:field="*{maQuyen}" class="form-select">  -->
+<!--             	<option th:each="Quyen : ${listQuyens}" -->
+<!--                 	th:value="${Quyen.maQuyen}" -->
+<!--                     th:text="${Quyen.tenQuyen}" ></option> -->
+<!--            	</select> -->
+<!--             </br> -->
+
+            <button type="submit" class="btn btn-info col-2"> Thêm</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/page_nhanvien}"> Quay lại</a>
+    </div>
+</div>
+	          </div>
+          </div>
+</div>
+
+
+</body>
+</html>

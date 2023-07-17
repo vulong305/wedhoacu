@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Thanh toán</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/shopcart_style.css}" />
+</head>
+<style>
+	.footer{
+		margin-top:0;
+	}
+	.form-group{
+		margin-bottom: 15px;
+	}
+</style>
+<body>
+<div class="super_container">
+		<!-- Header -->
+    <div th:insert="user/navbar :: copy"></div>
+
+		<!-- Main -->
+<section class="" >
+
+	<div class="container main d-flex justify-content-between ">
+        <div class="main_left ">
+            <h4 style="fonr-size: 50px;">Thông tin giao hàng</h4>
+            <form action="#" th:action="@{/checkoutbill}" th:object="${khachhang}" method="POST" style="font-size:1.3rem;">
+                <div class="form-group">
+					<label for="hoTen"><strong>Khách hàng:</strong></label>
+		            <input type="text" th:field="*{hoTen}" placeholder="Họ Tên" class="form-control">
+		            <p style="color:red;" th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}">Full Name error</p>
+                </div>
+                <div class="form-group">   
+					<label for="email"><strong>Email:</strong></label>
+            		<input type="text" th:field="*{email}" placeholder="Email" class="form-control">
+            		<p style="color:red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+                </div>
+                <div class="form-group">
+					<label for="sdt"><strong>SĐT:</strong></label>
+            		<input type="text" th:field="*{sdt}" placeholder="SDT" class="form-control ">
+            		<p style="color:red;" th:if="${#fields.hasErrors('sdt')}" th:errors="*{sdt}">SDT error</p>
+                </div>
+                <div class="form-group">
+            		<label for="diaChi"><strong>Địa chỉ:</strong></label>
+            		<input type="text" th:field="*{diaChi}" placeholder="Địa Chỉ" class="form-control ">
+            		<p style="color:red;" th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">Dia Chi error</p>
+                </div>
+                <button class="btn btn-success my-5" type="submit" style="float: right;">Xác nhận đặt hàng</button>
+        	</form>
+        </div>
+        <div class="main_right ">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 style="font-size: 30px;">Đơn hàng<span style="font-size: 20px; color:gray;"  class="ml-2">([[${session.TongSLGioHang}]] sản phẩm)</span></h4>
+                <a th:href="@{/cart}">Thay đổi</a>
+            </div>
+            <div class="row">
+            	<div class="col-3"></div>
+            	<div class="col-4"></div>
+            	<div class="col-2">SL</div>
+            	<div class="col-3">Tổng tiền</div>
+            </div>
+            <th:block th:if="${session.GioHang}">
+            	<th:block th:each="gioHangItem: ${session.GioHang}">
+            		<hr class="my-3">
+                    <div class="row align-items-center cart_item">
+                        <div class="col-3"><img class="img-fluid" th:src="@{ '/image/' + ${gioHangItem.value.sanPham.anh}}"></div>
+                        <div class="col-5">
+                            <div class="row">
+                                <h6 th:text="${gioHangItem.value.sanPham.tenSP}"></h6>
+                            </div>
+                        </div>
+                        <div class="col-1 pl-0">
+                            <h6 th:text="${gioHangItem.value.soLuong}"></h6>
+                        </div>
+                        <div class="col-3 p-0">
+                            <h6 style="font-size:20px;color: #ee4d2d;">[[${#numbers.formatInteger(gioHangItem.value.tongTien,3,'POINT')}]] VND</h6>
+                        </div>
+                    </div>
+            	</th:block>
+
+                    
+            </th:block>
+                  <hr class="my-4">  
+                 <div class="d-flex justify-content-end"> 
+                   <p class=" mr-0 " style=" color:black;font-size: 1.4rem;">Tổng số tiền thanh toán: <span style="color:#ee4d2d;" >[[${#numbers.formatInteger(session.TongTienGioHang,3,'POINT')}]] VND</span></p>
+                 </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a th:href="@{/categories}"><span><i class="fas fa-long-arrow-alt-left me-2"></i></span>Tiếp tục mua hàng</a>
+                    
+
+                </div>
+               
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+	
+
+	
+ 	<div th:insert="user/footer :: copy" ></div>
+</div> 
+    
+	<script>
+	document.querySelector('.nav__ ').classList.add('show__nav','fixed-top');
+	</script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/all.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

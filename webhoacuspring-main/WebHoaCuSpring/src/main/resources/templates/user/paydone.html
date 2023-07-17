@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Thanh toán</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+</head>
+<body>
+<div class="super_container">
+		<!-- Header -->
+    <div th:insert="user/navbar :: copy"></div>
+
+		<!-- Main -->
+<section class="" >
+
+	<div class="container main " style="text-align: center;">
+		<div style="padding: 200px 0;">
+			<h3 style="color:red;">Đơn hàng đã được đặt thành công!</h3>
+			<h3>Shop sẽ gọi điện xác nhận trong thời gian sớm nhất</h3>
+			<button class="btn btn-info mt-5"><a th:href="@{/}" style="color:white;">Quay lại trang chủ</a></button>
+		</div>
+
+	</div>
+
+</section>
+	
+
+	
+ 	<div th:insert="user/footer :: copy" ></div>
+</div> 
+    	<script>
+	document.querySelector('.nav__ ').classList.add('show__nav');
+	</script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{/plugins/fontawesome-free-6.1.1-web/js/all.min.js}"></script>
+</body>
+</html>

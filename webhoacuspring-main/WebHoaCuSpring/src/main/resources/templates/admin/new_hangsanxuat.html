@@ -1,0 +1,44 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Hãng Sản Xuất</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+	          
+	          <div class="container">
+        <h2 class="mb-3">Thêm Hãng Sản Xuất</h2>
+
+        <form action="#" th:action="@{/saveHangSanXuat}" th:object="${HangSanXuat}" method="POST">
+        	<label for="tenHangSX"><strong>Hãng sản xuất:</strong></label>
+            <input type="text" th:field="*{tenHangSX}" placeholder="Tên Hãng Sản Xuất" class="form-control col-4">
+			<p style="color:red" th:if="${#fields.hasErrors('tenHangSX')}" th:errors="*{tenHangSX}">Error</p>
+			
+            </br>
+            <label for="dacDiem"><strong>Đặc điểm:</strong></label>
+            <input type="text" th:field="*{dacDiem}" placeholder="Đặc điểm" class="form-control col-4">
+			<p style="color:red" th:if="${#fields.hasErrors('dacDiem')}" th:errors="*{dacDiem}">Error</p>
+            </br>
+            <button type="submit" class="btn btn-info col-2"> Thêm</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/page_hangsanxuat}"> Quay lại</a>
+    </div>
+</div>
+	          </div>
+          </div>
+</div>
+
+
+	
+</body>
+</html>

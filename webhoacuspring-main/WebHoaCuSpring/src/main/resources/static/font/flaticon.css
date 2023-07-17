@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?a93222e9256d4b6031fd53003e1f8537") format("truetype"),
+url("./flaticon.woff?a93222e9256d4b6031fd53003e1f8537") format("woff"),
+url("./flaticon.woff2?a93222e9256d4b6031fd53003e1f8537") format("woff2"),
+url("./flaticon.eot?a93222e9256d4b6031fd53003e1f8537#iefix") format("embedded-opentype"),
+url("./flaticon.svg?a93222e9256d4b6031fd53003e1f8537#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-hand:before {
+    content: "\f101";
+}
+.flaticon-free-delivery:before {
+    content: "\f102";
+}
+.flaticon-refund:before {
+    content: "\f103";
+}
+.flaticon-phone-call:before {
+    content: "\f104";
+}

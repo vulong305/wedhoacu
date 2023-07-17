@@ -1,0 +1,50 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Phân Quyền</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+<div class="container">
+        <h2 class="mb-3">Thêm Phân Quyền</h2>
+
+        <form action="#" th:action="@{/savePhanQuyen}" th:object="${phanquyen}" method="POST">
+        	<label for="maNV"><strong>Nhân viên:</strong></label>    
+            <select th:field="*{maNV}" class="form-select"> 
+                <option th:each="NhanVien : ${listNhanViens}"
+                    th:value="${NhanVien.maNV}"
+                    th:text="${NhanVien.hoTen}" ></option>
+            </select>
+            </br>
+            
+            <label for="maQuyen"><strong>Quyền:</strong></label>    
+            <select th:field="*{maQuyen}" class="form-select"> 
+                <option th:each="Quyen : ${listQuyens}"
+                    th:value="${Quyen.maQuyen}"
+                    th:text="${Quyen.tenQuyen}" ></option>
+            </select>
+            </br>
+
+            <button type="submit" class="btn btn-info col-2"> Thêm</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/page_phanquyen}"> Quay lại</a>
+    </div>
+</div>
+
+	          </div>
+          </div>
+</div>
+
+	
+</body>
+</html>

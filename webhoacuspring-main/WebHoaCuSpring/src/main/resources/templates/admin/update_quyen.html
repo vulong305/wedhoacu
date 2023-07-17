@@ -1,0 +1,42 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Quyền</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+
+<div class="container">
+        <h2 class="mb-3">Cập Nhật Quyền</h2>
+
+        <form action="#" th:action="@{/updateQuyen}" th:object="${quyen}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{maQuyen}" />
+
+			<label for="tenQuyen"><strong>Quyền:</strong></label>
+            <input type="text" th:field="*{tenQuyen}" class="form-control col-4">
+            <p style="color:red;" th:if="${#fields.hasErrors('tenQuyen')}" th:errors="*{tenQuyen}">Ten Quyen error</p>
+			</br>
+            
+            <button type="submit" class="btn btn-info col-2">Cập nhật</button>
+        </form>
+        <hr>
+
+        <a th:href="@{/page_quyen}"> Quay lại</a>
+    </div>
+</div>
+	          </div>
+          </div>
+</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th = "http://www.thymeleaf.org"
+      layout:decorate="admin/layout">
+<title>Quản Lý Chi Tiết Hoá Đơn</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+
+	
+
+	<!--Content of the page-->
+		        <!-- partial -->
+          <div class="content-wrapper">
+
+           
+            <div class="container"> 
+ 		
+		 </br>
+		<div class="card">
+             <div class="card-body">
+             	<div class="container">
+ 		<h3 style="text-align: center;" class="pt-4">DANH SÁCH CHI TIẾT HOÁ ĐƠN</h1> 
+		 </br>
+		 <h5 style="text-align: center;">Số hóa đơn: <span style="color:red;" th:text="${soHD}"></span></h4>
+ 		
+		  <table border="1" class = "table table-striped table-reCTHDonsive-md ">
+		   <thead>
+		    <tr>
+		     <th>Mã Hoá Đơn</th>
+		     <th>Mã sản phẩm</th>
+		     <th>Sản Phẩm</th>
+		     <th>Số Lượng</th>
+		     <th>Đơn Giá</th>
+		    </tr>
+		   </thead>
+		   <tbody>
+		   <th:block th:each="ChiTietHoaDon : ${listChiTietHoaDons}">
+		   		<tr >
+		    	<td th:text="${ChiTietHoaDon.maHD}"></td>
+		    	<td th:text="${ChiTietHoaDon.maSP}"></td>
+			   	<th:block th:each="SanPham : ${listSanPhams}">
+			   		<th:block th:if="${SanPham.maSP == ChiTietHoaDon.maSP}">
+			   			<td th:text="${SanPham.tenSP}"></td>
+			   		</th:block>
+			   	</th:block>
+			   	<td th:text="${ChiTietHoaDon.soLuong}"></td>
+			   	<td th:text="${ChiTietHoaDon.donGia}"></td>
+		    	</tr>
+		   </th:block>
+
+		   </tbody>
+		  </table>
+		  <a th:href="@{/page_hoadon}" class="mt-5"> Quay lại </a>
+ 	</div>
+             
+             </div>
+        </div>
+
+ 	</div>
+           
+
+          </div>
+	<!--Content of the page-->
+</div>
+</body>
+</html>

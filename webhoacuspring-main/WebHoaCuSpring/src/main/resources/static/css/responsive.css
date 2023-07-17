@@ -1,0 +1,434 @@
+/* -------------------Table--------------------- */
+@media only screen and (max-width: 1023px){
+    /* -----------------------NAVBAR--------------------- */
+    .nav__bar-item,
+    .nav__mobile{
+        display: block;    
+    }
+    .nav__mobile{
+        width: 50%;
+    }
+    .nav__PC,
+    .dropdown-content{
+        display: none;
+    }
+    .nav__logo img{
+        height: 45px;
+    }
+    .home img{
+        height: 100vh;
+        object-fit: cover;
+        object-position:40%;
+    }
+    /* -----------------------BANNER--------------------- */
+    .banner__item{
+        margin: 15px auto;
+        width: 420px;
+        height: 200px;
+    }
+    /* -----------------------CARD-ITEM--------------------- */
+    .new{
+        margin: 40px auto;
+    }
+    .new__title h1{
+        font-size: 2.5rem;
+    }
+    .new__title p{
+        font-size: 1.3rem;
+        width: 80%;
+    }
+    .new__product-card{
+        width: 12.5rem ;
+    }
+    .new__product-card .card-tittle{
+        max-height: 55px;
+        min-height: 55px;
+    }
+    .card h5{
+        font-size: 1.4rem;
+    }
+    /* -----------------------SERVICE--------------------- */
+    .service__item-icon{
+        font-size: 3.3rem;
+    }
+    .service__item-content{
+        font-size: 1rem;
+    }
+    .service__item-note{
+        font-size: 1.1rem;
+    }
+    /* ====================PAINTING==================== */
+    .painting .swiper-slide{
+        width: 320px;
+        height: 370px;
+        overflow: hidden;
+    }
+    /* -----------------------FOOTER--------------------- */
+    .footer{
+        flex-direction: column;
+    }
+    .footer__item{
+        text-align: center;
+        margin: auto;
+        width: 50%;
+    }
+    .footer__item-listIcon{
+        justify-content: center;
+    }
+    /*------------------------CHI TIẾT SẢN PHẨM---------------------------*/
+    .sp-main-right h1{
+        margin-top: 30px;
+    }
+    .sp-main-left .main-pic{
+        margin-top: 30px;
+        height: 350px;
+        width: 60%;    
+    }
+    .container{
+        margin: auto 7px !important;
+    }
+    .sp-main{
+        margin-bottom: 20px !important;
+    }
+    .title ul li{     
+        padding: 5px 10px;   
+    }
+   
+    .title hr{
+        margin: 0 auto;
+        width: 95%;
+    }
+    .thongtinsp table{
+        margin: 20px 0;
+        font-size: 1.1rem;
+        width: 730px;
+    }
+    .thongtinsp tr th{       
+        padding:6px 3px 6px 5px;
+    }
+    /*===============================DANH MỤC SẢN PHẨM=============================*/
+    .danh-muc-san-pham{
+        margin-top: 70px;
+    }
+    .list{
+        padding-left: 0;
+    }
+    .list-san-pham{
+        padding: 0;
+        margin-top: 70px;
+    }
+    .list #title a{
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        color: rgb(44, 43, 43);
+        font-weight: bold;
+        position: relative;
+    }
+    .list #title a::after{
+        content: "";
+        width: 110%;
+        height: 1.3px;
+        background: #000;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+    }
+    .list_item{
+        margin-left: 5px;
+    }
+    .list li{
+        font-size: 1.3rem;
+        margin: 10px auto;
+    }
+    .list li a{
+        color: rgb(46, 45, 45);
+    }
+
+}
+/* ------------------Mobile-------------------- */
+@media only screen and (max-width: 739px) {
+    /* -----------------------NAVBAR--------------------- */
+    .nav__mobile{
+        width: 75%;
+    }
+    .nav__mobile-link{
+        font-size: 0.85rem;
+    }
+    .nav__mobile-list{
+        padding-left: 25px;
+    }
+    .nav__mobile-close p{
+        font-size: 1.1rem;
+        margin: 2px;
+    }
+    /* -----------------------SWIPER-SLIDE--------------------- */
+    .swiper__caption{
+        color: rgb(83, 102, 114);
+        position: absolute;
+        top: 22%;
+        left: 7%;
+        z-index: 1200;
+        font-family: 'Raleway', sans-serif;
+        cursor: default;
+    }
+    .swiper__caption p{
+        font-size: 1.3rem;
+    }
+    .swiper__caption h1{
+        font-size: 2.3rem;
+        max-width: 85%;
+    }
+    .swiper__caption button{
+        font-size: 0.9rem;
+        padding: 15px 18px;
+    }
+    /* -----------------------BANNER--------------------- */
+    .banner__item{
+        margin: 15px auto;
+        width: 350px;
+        height: 180px;
+    }
+    .banner{
+        padding: 60px 0;
+    }
+    .banner__item h1{
+        font-size: 1.85rem;
+    }
+    .banner__item p{
+        font-size: 1.05rem;
+    }
+    .banner__item img{
+        width: 95px;
+    }
+    .banner__item:nth-child(1) img{
+        width: 100px;
+    }  
+    /* ====================PRODUCT-NEW==================== */ 
+    .new{
+        margin: 30px auto;
+    }
+    .new__title h1{
+        font-size: 2.2rem;
+    }
+    .new__title p{
+        font-size: 1.1rem;
+        width: 90%;
+    }
+    .new__product-card{
+        width: 9.2rem ;
+    }
+    .new__product-card .card-tittle{
+        max-height: 42px;
+        min-height: 42px;
+    }
+    .card h5{
+        overflow: hidden ;
+        font-size: 1.05rem;
+    }
+    .card-body{
+        padding: 10px;
+    }
+    .card-body button{
+        font-size: 0.72rem;
+    }
+     /* -----------------------SERVICE--------------------- */
+    .service{
+        flex-direction: column;
+    }
+     .service__item{ 
+        width: 80%;
+    }
+     .service__item-icon{
+        font-size: 2.15rem;
+    }
+    .service__item-content{
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    .service__item-note{
+        font-size: 0.75rem;
+        margin-bottom: 15px;
+    }
+    /* ====================PAINTING==================== */
+    .painting__title{
+        margin: 40px auto 30px auto;
+    }
+    .painting__title h1{
+        font-size: 1.9rem;
+    }
+    .painting .swiper-slide{
+        width: 300px;
+        height: 350px;
+        overflow: hidden;
+    }
+    /* -----------------------FOOTER--------------------- */
+    .footer{
+        flex-direction: column;
+    }
+    .footer__item{
+        text-align: start;
+        margin: auto;
+        margin-left: 10px;
+        width: 50%;
+    }
+    .footer__item-listIcon{
+        justify-content: start;
+    }
+    /*----------------------------CHI TIẾT SẢN PHẨM--------------------*/
+    .main-mobile{
+        padding: 0 !important;
+    }
+    .sp-main{
+        padding: 0 !important;
+    }
+    .sp-main-left .main-pic img{
+        margin-top: 40px;
+        display: block;
+    }
+    .sp-main-left .main-pic{
+        width: 90%;
+    } 
+    .sp-main-left .main-pic img{
+        width: 90%;
+        height: 300px;
+    } 
+    .container,.container-fluid{
+        margin: 0 !important;
+    }
+    .sp-link{
+        padding: 35px ;
+        background-color: rgb(216, 217, 228);
+        margin-bottom: 40px !important;
+        
+    }
+    .sp-link >div{
+        max-height: 30px;
+        overflow: hidden;
+    }
+    .sp-link a{
+        font-size: 1.1rem;
+    }
+    .sp-main-right h5{
+        font-size: 1.05rem;
+    }
+    .sp-main-right .giaca{
+        font-size: 2rem;
+    }
+    .sp-main-right .mausac button{
+        margin: auto 10px;
+    }
+    .sp-main-right .add{
+        margin: 10px auto 0 auto;
+        width: 100%;
+        padding: 10px 40px;
+        border-radius: 3px;
+        font-size: 1.3rem;
+    }
+    .sp-main-right .buy{
+        width: 100%;
+        margin: 10px auto 10px auto;
+        padding: 10px 70px;
+        border-radius: 3px;
+        font-size: 1.3rem;
+    }
+    .title ul{
+        margin-top: 35px;
+        padding: 0;
+    }
+    .title ul li{   
+        padding: 7px 15px;
+    }
+    .title ul li a{   
+        font-size: 1.3rem; 
+    }
+    .title hr{
+        width: 100%;
+    }
+    .thongtinsp table{
+        font-size: 1.1rem;
+        width: 100%;
+    }
+    .thongtinsp tr th{
+        padding:9px 3.5px 9px 8px;
+    }
+    .thongtinsp ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .thongtinsp table .tieude{
+        width: 100px;
+    }
+    .danhgia{
+        margin: 20px 0px 30px 0px;
+        padding: 10px 15px 5px 15px;
+    }
+    .danhgia >div{
+        width: 100%;
+    }
+    .danhgia .nhanxet{
+        width: 235px;
+    }
+    .danhgia .nhanxet >p{
+        font-size: 1.2rem;   
+    }
+    .danhgia >p{
+        font-size: 1.1rem;
+    }
+    .sp-cungloai{
+        max-height: 300px;
+        overflow: hidden;
+    }
+    .welcome hr{
+        margin-bottom: 5px;
+    }
+    .list-sp-cungloai{
+        margin: 10px auto 30px auto;
+    }
+    /*===============================DANH MỤC SẢN PHẨM=============================*/
+    .danh-muc-san-pham{
+        margin-top: 50px;
+    }
+    .list{
+        padding-left: 0;
+    }
+    .list-san-pham{
+        padding: 0;
+    }
+    .main{
+        padding: 5px;
+    }
+    .list #title a{
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        color: rgb(44, 43, 43);
+        font-weight: bold;
+        position: relative;
+    }
+    .list #title a::after{
+        content: "";
+        width: 110%;
+        height: 1.5px;
+        background: #000;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+    }
+    .list_item{
+        margin-left: 5px;
+    }
+    .list li{
+        font-size: 1.5rem;
+        margin: 10px auto;
+    }
+    .list li a{
+        color: rgb(46, 45, 45);
+    }
+
+    /*==========================PAGE-LIST========================*/
+    .dlink{
+        font-size: 1.1rem;
+    }
+
+
+}

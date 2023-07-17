@@ -1,0 +1,85 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Sản Phẩm</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ 
+</script>
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+
+<div class="container">
+        <h2 class="mb-3">Cập Nhật Sản Phẩm</h2>
+
+		<form action="#" th:action="@{/updateSanPham}" th:object="${sanpham}" method="POST" enctype="multipart/form-data">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{maSP}" />
+            <input type="hidden" th:field="*{anh}" />
+            <label for="tenSP"><strong>Tên sản phẩm:</strong></label>
+            <input type="text" th:field="*{tenSP}" placeholder="Tên Sản Phẩm" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('tenSP')}" th:errors="*{tenSP}">Ten San Pham Error</p>
+            </br>
+
+			<label for="dacDiem"><strong>Đặc điểm:</strong></label>
+            <textarea type="text" th:field="*{dacDiem}" rows="4" placeholder="Đặc Điểm" class="form-control col-4"></textarea>
+            <p style="color:red" th:if="${#fields.hasErrors('dacDiem')}" th:errors="*{dacDiem}">Dac Diem Error</p>
+            </br>
+
+			<label for="anh"><strong>Ảnh sản phẩm:</strong></label>
+   		 	<input type="file" name="image"  accept="image/png, image/jpeg, image/jpg" class="mb-3"/>
+   		 	</br>
+			
+            <label for="donGia"><strong>Đơn giá:</strong></label>
+            <input type="number" th:field="*{donGia}" placeholder="Đơn Giá" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}">Don Gia Error</p>
+            </br>
+            
+            <label for="ghiChu"><strong>Ghi chú:</strong></label>
+            <input type="text" th:field="*{ghiChu}" placeholder="Ghi Chú" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('ghiChu')}" th:errors="*{ghiChu}">Ghi Chu Error</p>
+            </br>
+            
+<!--             <label for="maSize"><strong>Size:</strong></label>
+ 			<select th:field="*{maSize}" class="form-select"> 
+            	<option th:each="Size : ${listSizes}"
+                	th:value="${Size.maSize}"
+                    th:text="${Size.tenSize}" ></option>
+           	</select> -->
+            <!-- </br> -->
+            
+            <label for="maLoaiSP"><strong>Loại sản phẩm:</strong></label>
+            <select th:field="*{maLoaiSP}" class="form-select"> 
+                <option th:each="LoaiSanPham : ${listLoaiSanPhams}"
+                    th:value="${LoaiSanPham.maLoaiSP}"
+                    th:text="${LoaiSanPham.tenLoaiSP}" ></option>
+            </select>
+            </br>
+            <label for="maHangSX"><strong>Hãng sản xuất:</strong></label>    
+            <select th:field="*{maHangSX}" class="form-select"> 
+                <option th:each="HangSanXuat : ${listHangSanXuats}"
+                    th:value="${HangSanXuat.maHangSX}"
+                    th:text="${HangSanXuat.tenHangSX}" ></option>
+            </select>
+            </br>
+            <button type="submit" class="btn btn-info col-2">Cập nhật</button>
+        </form>
+        <hr>
+
+        <a th:href="@{/page_sanpham}"> Quay lại</a>
+    </div>
+</div>
+	          </div>
+          </div>
+</div>
+
+	
+</body>
+</html>

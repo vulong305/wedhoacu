@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackBear Store</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mauve.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <style>
+
+    
+    </style>
+</head>
+<body>
+    <!-- /* ====================NAVBAR==================== */ -->
+	<div th:insert="user/navbar :: copy" class="fixed-top"></div>
+    
+    <!-- ===============================CHI TIẾT SẢN PHẨM===================================== -->
+
+    <div class="container-fluid main-mobile" style="margin-top:100px;">
+        <div aria-label="breadcrumb" class="container">
+            <ol class="breadcrumb" >
+	            <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+				<li class="breadcrumb-item" >
+				<a th:href="@{/categories/loaisanpham/{maLoaiSP}(maLoaiSP=${loaiSanPham.maLoaiSP})}" th:text = "${loaiSanPham.tenLoaiSP}"></a>
+				</li>
+				<li class="breadcrumb-item active" th:text="${sanPham.tenSP}"></li>              
+            </ol>
+            <hr>
+         </div>
+         
+        <div class="row sp-main container">
+            <div class="col-lg-5 col-12 sp-main-left ">
+                <div class="d-flex justify-content-center">
+                    <div class="main-pic">
+                        <img th:src="@{'/image/' + ${sanPham.anh}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-12 sp-main-right">
+                <h1 th:text="${sanPham.tenSP}"></h1>
+                <div id="dacdiem-sp">
+                	<h5 th:text="${sanPham.dacDiem}"></h5>
+                </div>
+                
+                <div class="giaca"><span th:text="${#numbers.formatInteger(donGia,3,'POINT')}"></span>₫</div>
+                <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center ">
+                    <span style="font-size:1.3rem;">Số lượng:</span>
+                    <div class="quantity_selector">
+                    <span class="minus"
+                        ><i class="fa fa-minus" aria-hidden="true"></i
+                    ></span>
+                    <span id="quantity_value">1</span>
+                    <span class="plus"
+                        ><i class="fa fa-plus" aria-hidden="true"></i
+                    ></span>
+                    </div>
+                </div>
+                <button class="add btn--addStore" id="addToCart" th:data-id="${sanPham.maSP}">Thêm vào giỏ hàng</button>
+                <div class="uu_dai">
+                    <ul>
+                        <p><b>ĐIỀU ĐẶC BIỆT Ở NT-STORE</b></p>
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>Miễn phí vận chuyển</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>Hàng đăng bán luôn có sẵn</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>Ship Cod không cần chuyển khoản</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>Được kiểm hàng trước khi thanh toán</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <span>Thoải mái đổi trả kể cả hư hỏng do vận chuyển</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+   </div>
+   <div class="container ">
+        <div class="title">
+            <ul>
+                <li><a href="#">Thông số sản phẩm</a></li>
+            </ul>
+            <hr>
+        </div>
+        <div class="thongtinsp">
+            <table >
+                <tr>
+                    <th class="tieude">Tên sản phẩm</th>
+                    <th class="noidung"> <strong  th:text="${sanPham.tenSP}"></strong></th>
+                </tr>
+                <tr>
+                    <th class="tieude">Thương hiệu</th>
+                    <th class="noidung" th:text="${hangSanXuat.tenHangSX}"></th>
+                </tr>
+                <tr>
+                    <th class="tieude">Loại sản phẩm</th>
+                    <th class="noidung" th:text="${loaiSanPham.tenLoaiSP}"></th>
+                </tr>
+                <tr>
+                    <th class="tieude">Đặc Điểm</th>
+                    <th class="noidung" th:text="${sanPham.dacDiem}"></th>
+                </tr>
+                <tr>
+                    <th class="tieude">Hướng Dẫn Sử Dụng</th>
+                    <th class="noidung">- Sử dụng trực tiếp.</th>
+                </tr>
+                <tr>
+                    <th class="tieude">Bảo Quản</th>
+                    <th class="noidung">
+                        <ul>
+                            <li>- Bảo quản nơi khô ráo thoáng mát</li>
+                        </ul>
+                    </th>
+                </tr>
+            </table>
+        </div> 
+    </div>
+
+    <div class="same__product">
+        <div class="same__product-title">
+            <h3>Sản phẩm cùng loại</h3>
+        </div>
+        <div class="swiper same__product-slide ">
+            <div class="swiper-wrapper">
+            	<th:block th:each="sanpham : ${listSanPhams}">
+					<th:block th:if="${sanpham.maLoaiSP == loaiSanPham.maLoaiSP}">
+						<div class="swiper-slide">
+				            <div class="card product-card text-center col-lg-3 col-md-4 col-6">
+				                <div class="card-img">
+				                    <a th:href="@{/single/{maSP} (maSP=${sanpham.maSP})}"><img th:src="@{ '/image/' + ${sanpham.anh}}" alt="" class="card-img-top"></a>
+				                </div>
+				                <div class="card-body">
+				                    <a th:href="@{/single/{maSP} (maSP=${sanpham.maSP})}"><h5 class="card-tittle " th:text="${sanpham.tenSP}"></h5></a>
+				                    <h5 class="card-text"><span th:text="${#numbers.formatInteger(sanpham.donGia,3,'POINT')}"></span>₫</h5>
+	                    			<a class="btn btn--addStore" th:href="@{/addcart/{id}/1 (id = ${sanpham.maSP})}">Thêm vào giỏ hàng</a>
+				                </div>
+				            </div>
+                		</div>
+					</th:block>
+				</th:block>
+                
+        
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <!-- /* ====================FOOTER==================== */ -->
+    <div th:insert="user/footer :: copy"></div>
+	<script>
+	document.querySelector('.nav__ ').classList.add('show__nav');
+	document.querySelector("#addToCart").addEventListener('click', function(){
+		var dataID = this.getAttribute('data-id');
+		var quantitySpan = document.querySelector("#quantity_value");
+		var quantityValue = parseInt(quantitySpan.innerHTML);
+		window.location = "/addcart/" + dataID + "/" + quantityValue;
+	})
+	</script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/js/all.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Hoá Đơn</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+<div class="container">
+        <h2 class="mb-3">Cập Nhật Hoá Đơn</h2>
+
+        <form action="#" th:action="@{/saveHoaDon}" th:object="${HoaDon}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{maHD}" />
+
+            <div>
+            	<label for="soHoaDon"><strong>Số hoá đơn:</strong></label>
+            	<input type="text" readonly th:field="*{shd}" class="form-control mb-4 col-4" >
+            </div>
+            
+			<div>
+        		<label for="ngayDat"><strong>Ngày đặt:</strong></label>
+        		<input type="date" readonly th:field="*{ngayDat}" id="ngayDat" />
+    		</div>
+    		</br>
+    		<div>
+        		<label for="ngayGiao"><strong>Ngày giao:</strong></label>
+        		<input type="date" th:field="*{ngayGiao}" id="ngayGiao"/>
+    		</div>
+    		</br>
+            
+            
+            <div>
+	            <label for="diaChiNhan"><strong>Địa chỉ nhận:</strong></label>
+	            <input type="text" readonly th:field="*{diaChiNhan}" class="form-control mb-4 col-4">
+            </div>
+            
+            <label for="tinhTrangDonHang"><strong>Tình trạng đơn hàng:</strong></label>
+            <select th:field="*{tinhTrang}" class="form-select" aria-label="Default select example">
+				  <option value="Chưa xác nhận">Chưa xác nhận</option>
+				  <option value="Xác nhận">Xác nhận</option>
+				  <option value="Đang giao">Đang giao</option>
+				  <option value="Giao thành công">Giao thành công</option>
+			</select>
+            </br>
+            
+            <!-- disabled field rồi thêm hidden input để lấy giá trị -->
+            <input type="hidden" th:field="*{maKH}" />
+            <fieldset disabled>
+            	<label for="maKH"><strong>Khách hàng:</strong></label>
+	            <select th:field="*{maKH}" class="form-select"> 
+	                <option th:each="KhachHang : ${listKhachHangs}"
+	                    th:value="${KhachHang.maKH}"
+	                    th:text="${KhachHang.hoTen}" ></option>
+	            </select>
+	            </br>
+            </fieldset>
+    
+            <button type="submit" class="btn btn-info col-2">Cập nhật</button>
+        </form>
+        <hr>
+
+        <a th:href="@{/page_hoadon}"> Quay lại</a>
+    </div>
+</div>
+
+	          </div>
+          </div>
+</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Khách Hàng</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+<div class="container">
+        <h2 class="mb-3">Thêm Khách Hàng</h2>
+
+        <form action="#" th:action="@{/saveKhachHang}" th:object="${khachhang}" method="POST">
+       	 	<label for="hoTen"><strong>Khách hàng:</strong></label>
+            <input type="text" th:field="*{hoTen}" placeholder="Họ Tên" class="form-control col-4">
+            <p style="color:red;" th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}">Full Name error</p>
+
+			<label for="email"><strong>Email:</strong></label>
+            <input type="text" th:field="*{email}" placeholder="Email" class="form-control col-4">
+            <p style="color:red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+
+			<label for="sdt"><strong>SĐT:</strong></label>
+            <input type="text" th:field="*{sdt}" placeholder="SDT" class="form-control col-4">
+            <p style="color:red" th:if="${#fields.hasErrors('sdt')}" th:errors="*{sdt}">SDT Error</p>
+            
+            <label for="diaChi"><strong>Địa chỉ:</strong></label>
+            <input type="text" th:field="*{diaChi}" placeholder="Địa Chỉ" class="form-control col-4">
+            <p style="color:red;" th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">Dia Chi error</p>
+
+            <button type="submit" class="btn btn-info col-2"> Thêm</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/page_khachhang}"> Quay lại</a>
+    </div>
+</div>
+
+	          </div>
+          </div>
+</div>
+
+
+	
+</body>
+</html>

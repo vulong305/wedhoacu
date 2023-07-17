@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	    <!-- /* ====================NAVBAR==================== */ -->
+    <div class="nav__ container-fluid" th:fragment="copy">
+        <a th:href="@{/}" class="nav__logo"><img th:src="@{/image/logo3.png}" alt=""></a>
+        <!-- ===============NAV-PC=============== -->
+
+            <nav class="nav__PC">
+                <ul class="nav__PC-list">
+                    <li class="nav__PC-link">
+                        <a th:href="@{/}" class="nav__link-title">Trang chủ</a>
+                    </li>
+                    <li class="nav__PC-link">
+                        <div class="link__content">
+                            <a th:href="@{/categories}"  >Sản phẩm</a>
+                            <ul class="dropdown-content">
+                            	<th:block th:each="loaiSP : ${listLoaiSanPhams}">
+                            		<li><a th:href="@{/categories/loaisanpham/{maLoaiSP}(maLoaiSP=${loaiSP.maLoaiSP})}" th:text="${loaiSP.tenLoaiSP}"></a></li>
+                            	</th:block>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav__PC-link">
+                        <div class="link__content">
+                            <a th:href="@{/categories}" class="nav__link-title">Hãng sản xuất</a>
+                            <ul class="dropdown-content">
+                            <th:block th:each="hangSX : ${listHangSanXuats}">
+                            	<li><a th:href="@{/categories/hangsanxuat/{maHangSX}(maHangSX=${hangSX.maHangSX})}" th:text="${hangSX.tenHangSX}"></a></li>
+                            </th:block>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav__PC-link">
+                        <a th:href="@{/contact}" class="nav__link-title">Liên hệ</a>
+                    </li>
+
+                </ul>
+                <div class="nav__list-icon">
+	                <div >
+					 	<form th:action="@{/searchSpUser}" method="get">
+					 	<div class="d-flex">
+					 		<input id="search-input-form" type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="Nhập nội dung cần tìm" >
+						 	<button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+					 	</div>
+	
+							</form>
+					</div>
+					<div class="d-flex align-items-center">
+					<a href="/login" class="open-signin"><i class="fas fa-user"></i></a>
+					<div class="checkout">
+						<a th:href="@{/cart}">
+							<i class="fas fa-shopping-cart" aria-hidden="true"></i>
+							<th:block th:if="${session.TongSLGioHang}">
+								<span id="checkout_items" class="checkout_items" th:text="${session.TongSLGioHang}" ></span>
+							</th:block>
+							
+						</a>
+					</div>
+
+					</div>
+
+                </div>
+            </nav>
+
+        <!-- ===============NAV-MOBILE=============== -->
+        <nav class="nav__mobile">
+            <!-- <div class="nav__mobile-login">
+                <a class="btn-login" >Đăng nhập</a>
+                <a class="btn-logout" >Đăng kí</a>
+            </div> -->
+             <ul class="nav__mobile-list">
+                <li class="nav__mobile-link">
+                    <a th:href="@{/}">Giới thiệu</a>
+                    <p><i class="fas fa-chevron-right"></i></p>
+                </li>
+                <li class="nav__mobile-link">
+                    <a th:href="@{/categories}">Sản phẩm</a>
+                    <p><i class="fas fa-chevron-right"></i></p>
+                </li>
+                <li class="nav__mobile-link">
+                    <a th:href="@{/categories}">Hãng sản xuất</a>
+                    <p><i class="fas fa-chevron-right"></i></p>
+                </li>
+                <li class="nav__mobile-link">
+                    <a href="">Liên hệ</a>
+                    <p><i class="fas fa-chevron-right"></i></p>
+                </li>
+            </ul>
+            <div class="nav__mobile-close">
+                <p class="btn btn-close"></p>
+            </div>
+        </nav>
+        <div class="nav__bar-item">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav__overlay"></div>
+    </div>
+        <!-- /* ====================Search==================== */ -->
+    <div id="display__search-shadow"></div>
+    <div id="display__search-input">
+        <input type="text" placeholder="Bạn cần tìm gì?" >
+        <button type="button" >Tìm kiếm</button>
+    </div> 
+</body>
+</html>

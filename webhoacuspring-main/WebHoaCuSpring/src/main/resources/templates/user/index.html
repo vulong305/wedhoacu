@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackBear Store</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+   
+</head>
+<body>
+	<!-- /* ====================NAVBAR==================== */ -->
+	<div th:insert="user/navbar :: copy"></div>
+
+
+
+    <!-- /* ====================BackGround==================== */ -->
+    <div class="swiper slide_Swiper">
+        <div class="swiper__caption">
+            <p>BlackBear Store</p>
+            <h1>Đồng Hành <br> Cùng <b>Đam Mê</b> Của Bạn</h1>
+            <button type="button">Khám phá ngay</button>
+        </div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img src="../image/anh1.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../image/anh3.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../image/anh4.jpg" alt="">
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <
+    <!-- /* ====================BANNER==================== */ -->
+    <div class="banner container-fluid">
+        <div class="row ">
+            <div class="banner__item col-md-4 col-12">
+                <h1>Chất lượng</h1>
+                <img src="../image/chatluong.png" class="banner__item-img">
+                <p class="banner__item-content">Được tạo thành từ những chất liệu tốt nhất</p>
+            </div>
+            <div class="banner__item col-md-4 col-12">
+                <h1>An toàn</h1>
+                <img src="../image/antoan.png" class="banner__item-img">
+                <p class="banner__item-content">Thành phần chất liệu thân thiện người dùng</p>
+            </div>
+            <div class="banner__item col-md-4 col-12">
+                <h1>Chính hãng</h1>
+                <img src="../image/chinh_hang.png" class="banner__item-img">
+                <p class="banner__item-content">Từ những hãng sản xuất nổi tiếng trên toàn thế giới</p>
+            </div>
+        </div>
+    </div>
+    <!-- /* ====================NEW_PRODUCT==================== */ -->
+    <div class="new container">
+        <div class="new__title">
+            <h1>Sản phẩm mới</h1>
+        </div>
+        <div class="new__product row">
+            <th:block th:each="sanpham : ${listSanPhams}">
+	            <div class="card product-card text-center col-lg-3 col-md-4 col-6">
+	                <div class="card-img">
+	                    <a th:href="@{/single/{maSP} (maSP=${sanpham.maSP})}"><img th:src="@{ '/image/' + ${sanpham.anh}}" alt="" class="card-img-top"></a>
+	                </div>
+	                <div class="card-body">
+	                    <a th:href="@{/single/{maSP} (maSP=${sanpham.maSP})}"><h5 class="card-tittle " th:text="${sanpham.tenSP}"></h5></a>
+	                    <h5 class="card-text"><span th:text="${#numbers.formatInteger(sanpham.donGia,3,'POINT')}"></span>₫</h5>
+	                    <a class="btn btn--addStore" th:href="@{/addcart/{id}/1 (id = ${sanpham.maSP})}">Thêm vào giỏ hàng</a>
+	                </div>
+	            </div>
+            </th:block>
+        </div>
+    </div>
+    <div class="service">
+        <div class="service__item">
+            <p class="service__item-icon"><i class="flaticon-free-delivery"></i></p>
+            <p class="service__item-content">Giao Hàng Miễn Phí</p>
+            <p class="service__item-note">Miễn phí vận chuyển cho mọi đơn hàng</p>
+        </div>
+        <div class="service__item">
+            <p class="service__item-icon"><i class="flaticon-refund"></i></p>
+            <p class="service__item-content">Đổi Trả Hàng</p>
+            <p class="service__item-note">Hoàn 100% giá tiền nếu có lỗi sản phẩm</p>
+        </div>
+        <div class="service__item">
+            <p class="service__item-icon"><i class="flaticon-hand"></i></p>
+            <p class="service__item-content">Sản phẩm chính hãng</p>
+            <p class="service__item-note">Nhà cung cấp sản phẩm uy tín, chất lượng</p>
+        </div>
+        <div class="service__item">
+            <p class="service__item-icon"><i class="flaticon-phone-call"></i></p>
+            <p class="service__item-content">Giá rẻ bất ngờ</p>
+            <p class="service__item-note">Luôn đem đến giá cả tốt nhất</p>
+        </div>
+    </div>
+    <!-- /* ====================PAINTING==================== */ -->
+    <div class="painting">
+        <div class="painting__title">
+            <h1>Một số tranh từ sản phẩm</h1>
+        </div>
+        <div class="swiper painting__slide">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="../image/painting/anh1.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh2.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh3.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh4.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh5.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh6.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="../image/painting/anh8.jpg" />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+    </div>
+        <!-- /* ====================FOOTER==================== */ -->
+    <div th:insert="user/footer :: copy"></div>
+    
+
+	<script th:src="@{/js/all.min.js}"></script>
+	<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/navbar.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Giỏ hàng</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/shopcart_style.css}" />
+</head>
+<style>
+	.footer{
+		margin-top:0;
+	}
+</style>
+<body>
+<div class="super_container">
+	<!-- Header -->
+    <div th:insert="user/navbar :: copy"></div>
+	
+	<!-- Main -->
+<section class="" >
+  <div class="cart-main ">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-10">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+                <div class=" px-5 py-4 ">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
+                    <th:block th:if="${session.TongSLGioHang}">
+                    	<h5 class="mb-0 text-muted">[[${session.TongSLGioHang}]] sản phẩm</h5>
+                    </th:block>
+                    
+                  </div>
+                  <hr class="my-4">
+                  <th:block th:unless="${session.GioHang}">
+                  		<h4 style="color:red;text-align:center;">Chưa có sản phẩm nào trong giỏ hàng!</h4>                  		
+                  </th:block>
+                  <th:block th:if="${session.GioHang}">
+                  
+	                  <th:block th:if="${session.GioHang.size() == 0 }">
+	                  	<h4 style="color:red;text-align:center;">Chưa có sản phẩm nào trong giỏ hàng!</h4>
+	                  </th:block>
+	                  
+	                  <th:block th:unless="${session.GioHang.size() == 0}">
+	                  <div class="row justify-content-between align-items-center" >
+		                  	<div class="col-lg-2"></div>
+		                  	<div class="col-lg-3"></div>
+		                  	<div class="col-lg-2"><h5 style="color:#817977">Đơn giá</h5></div>
+		                  	<div class="col-lg-2"><h5 style="color:#817977">Số lượng</h5></div>
+		                  	<div class="col-lg-2"><h5 style="color:#817977">Tổng tiền</h5></div>
+		                  	<div class="col-lg-1"></div>
+	                  </div>
+	                  <hr class="mb-2 mt-0">
+	                  <th:block th:each="gioHangItem: ${session.GioHang}">
+	                  		<!-- Sản phẩm  -->
+		                  <div class="row mb-4 d-flex justify-content-between align-items-center item">
+		                  
+		                    <div class="col-md-2 col-lg-2 col-xl-2">
+		                      <img th:src="@{ '/image/' + ${gioHangItem.value.sanPham.anh}}" class="img-fluid rounded-3" >
+		                    </div>
+		                    
+		                    <div class="col-md-3 col-lg-3 col-xl-3">
+		                      <h6 class="text-black mb-0" ><a th:href="@{/single/{maSP} (maSP=${gioHangItem.value.sanPham.maSP})}" style="color:#282828" 
+		                      th:text="${gioHangItem.value.sanPham.tenSP}"></a></h6>
+		                    </div>
+		                    
+		                    <div class="col-md-2 col-lg-2 col-xl-2">
+		                    	<h6 class="mb-0 item-price">[[${#numbers.formatInteger(gioHangItem.value.sanPham.donGia,3,'POINT')}]] VND</h6>
+		                    </div>
+		                    
+		                    <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+		                      <button class="btn btn-link px-2 pt-1 btnDown"  th:data-id="${gioHangItem.key}">
+		                        <i class="fas fa-minus"></i>
+		                      </button>
+		                      <input th:id="'quantity-sp-' + ${gioHangItem.key}" disabled name="quantity" th:value="${gioHangItem.value.soLuong}" type="number" min="1" max="50"
+		                        class="form-control form-control-sm " style="width: 50px;text-align: center;"/>
+		                      <button class="btn btn-link px-2 pt-1 btnUp"  th:data-id="${gioHangItem.key}">
+		                        <i class="fas fa-plus"></i>
+		                      </button>
+		                    </div>
+		                    
+		                    <div class="col-md-2 col-lg-2 col-xl-2">
+		                      <h6 class="mb-0 item-price" style="color: #ee4d2d;">[[${#numbers.formatInteger(gioHangItem.value.tongTien,3,'POINT')}]] VND</h6>
+		                    </div>
+		                    
+		                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+		                      <a th:href="@{/Deletecart/{id} (id = ${gioHangItem.key})}" class="text-muted item-close"><i class="fas fa-times" style="color:red;"></i></a>
+		                    </div>
+		                    
+		                  </div>
+		                  <hr class="my-4">
+	                  </th:block>
+	                  </th:block>
+                  
+                  </th:block>
+                  
+                  
+                 
+					
+
+					<div class="d-flex justify-content-between row">
+					     <div class="col-3" style="padding-top: 30px;" >
+                    		<h6 class="mb-0"><a th:href="@{/}" class="text-body"><i
+                          	class="fas fa-long-arrow-alt-left me-2"></i>Trở về trang chủ</a></h6>
+                  		</div>
+                  		<th:block th:if="${session.GioHang}">
+                  			                  		<th:block th:unless="${session.GioHang.size() == 0}">
+                  		<div class="col-6 row align-items-center">
+                  			<p class="col-6 mb-0" style=" color:black;font-size: 1.3rem;">Tổng tiền: <span style="color:#ee4d2d;" >[[${#numbers.formatInteger(session.TongTienGioHang,3,'POINT')}]] VND</span></p>
+                        	<a type="button" class="btn btn-dark btn-block col-5 py-2" style="color:white;font-size: 1.3rem;" th:href="@{/paybill}" >Mua hàng</a>
+                  		</div>
+                  		</th:block>
+                  		</th:block>
+
+                  		
+
+                  		
+					</div>
+
+                </div>
+              </div>
+              
+              <!-- cart-right -->
+<!--               <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h4 class="fw-bold mb-2 pt-1">Thông tin đặt hàng</h4>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase">items 3</h5>
+                    <h5>€ 132.00</h5>
+                  </div>
+
+                  <h5 class="text-uppercase mb-3">Shipping</h5>
+
+                  <div class="mb-4 pb-2">
+                    <select class="select">
+                      <option value="1">Standard-Delivery- €5.00</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                    </select>
+                  </div>
+
+                  <h5 class="text-uppercase mb-3">Give code</h5>
+
+                  <div class="mb-5">
+                    <div class="form-outline">
+                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Examplea2">Enter your code</label>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5>€ 137.00</h5>
+                  </div>
+
+                  <button type="button" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">Register</button>
+
+                </div>
+              </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+	
+	<!-- Footer -->
+ 	<div th:insert="user/footer :: copy" ></div>
+</div>
+
+	<script>
+		var btnUp = document.querySelectorAll(".btnUp");
+		var btnDown = document.querySelectorAll(".btnDown");
+		
+		for(var key=0; key < btnUp.length; key++ ) {
+			
+			btnUp[key].addEventListener('click', function(){
+				var dataID = this.getAttribute('data-id');				
+				var idQuantityForm ="#quantity-sp-" + dataID;
+			    var inputQuantity = document.querySelector(idQuantityForm);
+			    inputQuantity.stepUp();
+			    var valueNumber = parseInt(inputQuantity.value);
+				window.location = "editcart/" + dataID + "/" + valueNumber;
+			})
+			
+			btnDown[key].addEventListener('click', function(){
+				var dataID = this.getAttribute('data-id');				
+				var idQuantityForm ="#quantity-sp-" + dataID;
+			    var inputQuantity = document.querySelector(idQuantityForm);
+			    inputQuantity.stepDown();
+			    var valueNumber = parseInt(inputQuantity.value);
+				window.location = "editcart/" + dataID + "/" + valueNumber;
+			})
+		}
+
+	
+
+	</script>
+	
+		<script>
+	document.querySelector('.nav__ ').classList.add('show__nav','fixed-top');
+	</script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/all.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

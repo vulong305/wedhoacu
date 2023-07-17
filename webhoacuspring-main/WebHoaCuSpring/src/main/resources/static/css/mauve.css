@@ -1,0 +1,369 @@
+
+/* ------------------------------------------------------------------------------
+-------------------- Sản phẩm -----------------------------------------------
+----------------------------------------------------------------------------- */
+.sp-link{
+    margin-top: 50px;
+    padding: 80px ;
+    background-color: rgb(216, 217, 228);
+}
+.sp-link a{
+    font-family: 'Rokkitt', serif;
+    text-decoration: none;
+    color: rgb(88, 87, 87);
+    font-size: 1.5rem;
+}
+.sp-link .active{
+    color: black;
+}
+.sp-main{
+   margin: 120px auto !important;
+}
+.sp-main-left .main-pic img{
+    margin: 10px auto 5px auto;
+    background-size: cover;
+    height: 400px;
+}
+
+.sp-main-right h5{
+    margin: 5px auto;
+   color: rgb(90, 87, 87);
+}
+.sp-main-right .giaca{
+    padding-left: 20px;
+    font-size: 2.5rem;
+    color: rgb(211, 9, 9);
+    margin:13px auto;
+    background-color: rgb(241, 238, 238);
+}
+.sp-main-right .mausac{
+    margin: 10px auto;
+    font-size: 1.5rem;
+}
+.sp-main-right .mausac p{
+    margin-bottom: 5px;
+}
+.sp-main-right .mausac button{
+    padding: 7px 30px !important;
+    margin-right:20px;
+}
+.sp-main-right .soluong{
+    margin: 15px auto;
+    font-size: 1.5rem;
+}
+.sp-main-right .soluong input{
+    border: 1px solid rgb(117, 112, 112);
+}
+.sp-main-right .soluong .input-group{
+    z-index: 0;
+    margin-top: 10px;
+    width: 150px;
+    height: 36px ;
+}
+.sp-main-right .add{
+    margin: 20px 3px;
+    padding: 10px 40px;
+    border-radius: 3px;
+    border: 1px solid orangered;
+    background-color: white;
+    color: orangered;
+    font-size: 1.3rem;
+}
+.sp-main-right .add:hover{
+    background-color: rgb(228, 231, 231);
+}
+.sp-main-right .buy{
+    margin: 20px 3px;
+    padding: 10px 70px;
+    border-radius: 3px;
+    border: 1px solid orangered;
+    background-color: rgb(235, 82, 27);
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+}
+.sp-main-right .buy:hover{
+    background-color: rgb(240, 106, 58);
+}
+.title ul{
+    margin: 0;
+}
+.title ul li{
+    list-style: none;
+    padding: 10px 15px;
+    border: 1px solid rgb(180, 177, 177);
+    border-bottom: 2px solid red;
+    width:  250px;
+}
+.title ul li a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black;
+}
+.title hr{
+    margin: 0 auto;
+    width: 95%;
+}
+.thongtinsp table{
+    margin: 30px 30px;
+    font-size: 1.1rem;
+    width: 900px;
+}
+.thongtinsp tr th{
+    border: 1px solid rgb(180, 177, 177);
+    padding:12px 5px 12px 8px;
+}
+.thongtinsp ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.thongtinsp table .noidung{
+    font-family: 'Radio Canada', sans-serif;
+    font-weight: 400;
+}
+.thongtinsp table .tieude{
+    font-family: 'Radio Canada', sans-serif;
+    width: 200px;
+}
+.danhgia{
+    margin: 20px 30px;
+    border: 1px solid rgb(180, 177, 177);
+    padding: 20px;
+}
+.danhgia img{
+    padding: 0;
+    border: 3px solid rgb(206, 199, 199);
+    width: 55px;
+    height: 55px;
+    margin: 0 10px 0 5px;
+}
+.danhgia .nhanxet{
+    border: 1px solid rgb(221, 218, 218);
+    padding: 3px 8px;
+}
+.danhgia .nhanxet h5{
+    font-family: 'Rokkitt', serif;
+    color:rgb(0, 100, 182);
+    font-weight: bold;
+}
+.danhgia .nhanxet >div>p{
+    color: rgb(110, 117, 117);
+}
+.danhgia .nhanxet >p{
+    font-size: 1.5rem;
+    color: rgb(82, 79, 79);
+}
+.danhgia button{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    background-color: #7990bd;
+}
+.danhgia button a{
+    text-decoration: none;
+    color: white;
+}
+.danhgia button:hover{
+    background-color: #395ca3;
+}
+.danhgia >p{
+    font-size: 1.1rem;
+    color: rgb(73, 72, 72);
+}
+.uu_dai ul{
+    padding-left: 5px;
+    font-size: 1.1rem;
+}
+.quantity
+{
+	width: 100%;
+	height: 40px;
+	margin-top: 25px;
+}
+.quantity_selector
+{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 132px;
+	height: 100%;
+	border: solid 1px #e5e5e5;
+	margin-left: 29px;
+}
+.quantity_selector span
+{
+	font-weight: 500;
+	color: #232530;
+}
+.plus,
+.minus
+{
+	padding-left: 14px;
+	padding-right: 14px;
+	cursor: pointer;
+}
+.plus:hover,
+.minus:hover
+{
+	color: #b5aec4;
+}
+
+/*********************************
+7. Best Sellers
+*********************************/
+
+/* ====================PAINTING==================== */
+.same__product{
+    width: 80%;
+    margin: auto;
+}
+.same__product-title{
+    margin: 100px auto 0px auto;
+}
+.same__product-title h3{
+    font-size: 2.2rem;
+    color: var(--title-color);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.same__product .swiper-slide{
+    width: 320px;
+    height: 430px;
+    overflow: hidden;
+}
+.same__product .swiper-slide img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: 0.4s;
+}
+.same__product .swiper-slide img:hover{
+    transform: scale(1.05);
+}
+.swiper-button-next,
+.swiper-button-prev{
+    zoom: 1;
+    color: whitesmoke;
+    background-color:  rgba(63, 67, 74,0.5);
+    right: 0;
+}
+/*===============================DANH MỤC SẢN PHẨM=============================*/
+.main{
+    margin: 100px auto;
+}
+.breadcrumb{
+    font-size: 1.3rem;
+}
+.breadcrumb-item a{
+	color: #166ec8 !important;
+}
+.danh-muc-san-pham{
+    padding: 10px;
+}
+.danh-muc-san-pham .active{
+    color:#fe4c50;
+    text-decoration: underline;
+}
+.list #title a{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: rgb(44, 43, 43);
+    font-weight: bold;
+    position: relative;
+}
+.list #title a::after{
+    content: "";
+    width: 110%;
+    height: 1.5px;
+    background: #000;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+}
+.list_item{
+    margin-left: 5px;
+}
+.list li{
+    font-size: 1.3rem;
+    margin: 10px auto;
+}
+.list li a{
+    color: rgb(71, 69, 69);
+}
+.right_title{
+    background-color: #98b2e6;
+    padding: 10px;
+    margin-top: 20px;
+}
+.right_title p{
+
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+/*=============================== SẢN PHẨM=============================*/
+.product-card{
+    margin: 30px 5px 0 5px;
+    border: none ;
+    padding: 0;
+    width: 12.5rem ;
+    overflow: hidden ;
+    position: relative;
+}
+.product-card:hover{ 
+    border: 1px solid rgba(61, 59, 59,0.3) ;
+    background-color: rgba(233, 243, 247, 0.3) ;
+}
+.product-card img{
+    overflow: hidden;
+}
+.product-card img:hover{
+    transform: scale(1.15);
+}
+.product-card .card-tittle{
+    max-height: 60px;
+    min-height: 60px;
+}
+.card-img{
+    overflow: hidden;
+}
+.card-img a img{
+    transition:  .5s;
+}
+.card h5{
+    overflow: hidden ;
+    font-size: 1.4rem;
+}
+.card a{
+    color: black;
+    text-decoration: none;
+}
+.card-body button{
+    background-color: rgb(63, 138, 207);
+    color: whitesmoke;
+    border-radius: 25px;
+}
+.card-body button:hover{
+    color: whitesmoke;
+    background-color: rgb(28, 172, 141);
+}
+    #dacdiem-sp{
+    	display: -webkit-box;
+        max-height: 3.2rem;
+       -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        line-height: 1.6rem;
+    	
+    	
+    }
+
+   

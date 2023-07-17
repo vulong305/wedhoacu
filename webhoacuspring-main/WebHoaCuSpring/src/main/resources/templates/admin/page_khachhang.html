@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Khách Hàng</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+	<!--Content of the page-->
+		        <!-- partial -->
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h2 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Quản lý khách hàng
+              </h2>
+            </div>
+           
+            <div class="container"> 
+ 		
+<!--  		Thêm / để luôn về đúng url  -->
+ 		   <form th:action="@{/searchKH}" method="get">
+ 		   <div class="form-group d-flex justify-content-end">
+ 		   		<input class="form-control " type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm khánh hàng" style="width: 300px;">
+ 		   		<div class="">
+	 		   		<button type="submit" class="btn btn-primary">Search</button>
+			 		<button type="submit" class="btn btn-danger">Reset</button>
+ 		   		</div>
+
+ 		   </div>
+		 	
+		 </form>
+		 </br>
+		 <div class="card">
+                  <div class="card-body">
+           <table border="1" class = "table table-striped table-bordered table-responsive-md">
+		   <thead>
+		    <tr>
+		     <th> <a th:href="@{'/pageKH/' + ${currentPage} + '?sortField=maKH&sortDir=' + ${reverseSortDir}}">
+      			Mã Khách Hàng</a></th>
+		     <th> <a th:href="@{'/pageKH/' + ${currentPage} + '?sortField=hoTen&sortDir=' + ${reverseSortDir}}">
+      			Họ Tên</a></th>
+		     <th> <a th:href="@{'/pageKH/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
+      			Email</a></th>
+		     <th> <a th:href="@{'/pageKH/' + ${currentPage} + '?sortField=sdt&sortDir=' + ${reverseSortDir}}">
+      			SĐT</a></th>
+		     <th> <a th:href="@{'/pageKH/' + ${currentPage} + '?sortField=diaChi&sortDir=' + ${reverseSortDir}}">
+      			Địa Chỉ</a></th>
+		     <th sec:authorize="hasAnyAuthority('Admin', 'Editor')">Chức Năng</th>
+		    </tr>
+		   </thead>
+		   <tbody>
+		    <tr th:each="KhachHang : ${listKhachHangs}">
+		    	<td th:text="${KhachHang.maKH}"></td>
+			   	<td th:text="${KhachHang.hoTen}"></td>
+			   	<td th:text="${KhachHang.email}"></td>
+			   	<td th:text="${KhachHang.sdt}"></td>
+			   	<td th:text="${KhachHang.diaChi}"></td>
+			   	<td sec:authorize="hasAnyAuthority('Admin', 'Editor')">   		
+			   		<a class="px-2" sec:authorize="hasAnyAuthority('Admin', 'Editor')" th:href="@{/showFormForUpdateKH/{maKH}(maKH=${KhachHang.maKH})}"><i style="font-size:25px;color:blue;" class='mdi mdi-pencil-box'></i></a>
+			   		<a class="px-2" sec:authorize="hasAnyAuthority('Admin')" th:href="@{/deleteSanPham/{maKH}(maKH=${KhachHang.maKH})}"><i style="font-size:25px;color:red;" class='mdi mdi-delete-forever mdi-5x'></i></a>	
+			   	</td>
+		    </tr>
+		   </tbody>
+		  </table>
+                  </div>
+         </div>
+
+		 
+		<div class="d-flex page-list justify-content-center">
+						<div th:if="${totalPages > 1}">
+		          		  <ul class="pagination col-sm-10">
+		                	<li class="page-item">
+			                    <a th:if="${currentPage >= totalPages}" th:href="@{'/pageKH/' + ${totalPages - currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" class="page-link"><i class="mdi mdi-chevron-double-left"></i></a>
+			                    <a th:unless="${currentPage >= totalPages}" class="page-link disable"><i class="mdi mdi-chevron-double-left"></i></a>
+		                	</li>
+		                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+		                    <li class="page-item ">
+		                          <a th:if="${currentPage != i}" th:href="@{'/pageKH/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" class="page-link ">[[${i}]]</a>
+		                    </li>
+		                    <li class="page-item active">
+		                    		<a th:unless="${currentPage != i}" class="page-link">[[${i}]]</a>
+		                    </li>
+		                    </span>
+		               		<li class="page-item">
+			                    <a th:if="${currentPage < totalPages}" th:href="@{'/pageKH/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" class="page-link"><i class="mdi mdi-chevron-double-right"></i></a>
+			                    <a th:unless="${currentPage < totalPages}" class="page-link disable"><i class="mdi mdi-chevron-double-right"></i></a>
+		                	</li>
+		         	   </ul>
+		        </div>
+		</div>
+ 	</div>
+           
+
+          </div>
+	
+</div>
+</body>
+</html>

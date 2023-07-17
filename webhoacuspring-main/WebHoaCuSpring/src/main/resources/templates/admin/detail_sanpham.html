@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Sản Phẩm</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ 
+ <!-- Bootstrap -->    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+          <div class="card-body">
+          	<div class="d-flex justify-content-center " >  <!-- white-space: nowrap để chữ trên 1 hàng -->
+			<h2 class="mt-4">Chi Tiết Sản Phẩm</h2>
+	</div>
+	<div class="container">
+		<div class="row">
+	 		<div class="col-12">
+    			<form th:object="${sanpham}" method="POST" enctype="multipart/form-data">
+      				<img  th:src ="@{'/image/' + ${sanpham.anh}}" style="width: 300px;" class="rounded mx-auto d-block" />
+    			</form>
+    	
+    		</div>
+	    	<div class="col-12 mt-4">
+	     		<form th:object="${sanpham}" method="POST" enctype="multipart/form-data">
+	     		<!-- Bỏ <select> vào fieldset để disabled-->
+		            <fieldset disabled> 
+		            	<!-- Add hidden form field to handle update -->
+		            <input type="hidden" th:field="*{maSP}" />
+		            
+		            <label for="tenSP"><strong>Tên sản phẩm:</strong></label>
+		           	<input type="text" th:field="*{tenSP}" class="form-control mb-4 col-4">	
+		           	
+		           	<label for="dacDiem"><strong>Đặc điểm:</strong></label>
+					<textarea style="width: 100%" rows="4" disabled th:field="*{dacDiem}" class="form-control mb-4 col-4"></textarea>
+		            
+		            <label for="donGia"><strong>Đơn giá:</strong></label>
+		            <input type="text" th:field="*{donGia}" class="form-control mb-4 col-4">
+		            
+		            <label for="ghiChu"><strong>Ghi chú:</strong></label>
+		            <input type="text" th:field="*{ghiChu}" class="form-control mb-4 col-4">
+		            
+<!-- 		            <label for="maSize"><strong>Size:</strong></label>
+		            <select th:field="*{maSize}" class="form-select"> 
+		            	<option th:each="Size : ${listSizes}"
+		                	th:value="${Size.maSize}"
+		                    th:text="${Size.tenSize}" ></option>
+		           	</select>
+		            </br> -->
+		            
+		            <label for="maLoaiSP"><strong>Loại sản phẩm:</strong></label>
+		            <select th:field="*{maLoaiSP}" class="form-select"> 
+		                <option th:each="LoaiSanPham : ${listLoaiSanPhams}"
+		                    th:value="${LoaiSanPham.maLoaiSP}"
+		                    th:text="${LoaiSanPham.tenLoaiSP}" ></option>
+		            </select>
+		            </br>
+		            
+		            <label for="maHangSX"><strong>Hãng sản xuất:</strong></label>    
+		            <select th:field="*{maHangSX}" class="form-select"> 
+		                <option th:each="HangSanXuat : ${listHangSanXuats}"
+		                    th:value="${HangSanXuat.maHangSX}"
+		                    th:text="${HangSanXuat.tenHangSX}" ></option>
+		            </select>
+		            </br>
+		            </fieldset>
+		
+		        </form>
+	    </div>
+  </div>
+		
+        <a th:href="@{/page_sanpham}"> Quay lại</a>
+    </div>
+          
+          </div>
+     </div>
+ 	
+</div>
+</div>
+
+</body>
+</html>
+

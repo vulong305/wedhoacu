@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/flaticon.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mauve.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+</head>
+<style>
+.main{
+	margin: auto;
+	margin-top: 100px;
+	padding: 100px 0 50px 0;
+	background-color: #5cdde9;
+	border-radius: 5px;
+}
+.main > div{
+margin: auto;
+}
+.main p{
+font-size: 20px;}
+.main h1{
+font-size: 55px;}
+</style>
+<body>
+
+    <!-- /* ====================NAVBAR==================== */ -->
+	<div th:insert="user/navbar :: copy" class="fixed-top"></div>
+	
+	<div class="container main d-flex ">
+		<div  style="color:black;">
+			<h1>Liên hệ</h1>
+			<p>Liên hệ thông qua số điện thoại hoặc email dưới đây</p>
+			<div class="m-4">					
+				<p>Số điện thoại: 0356049424</p>
+				<p>Email: truong992001@gmail.com</p>
+			</div>
+			<br>
+			<div>
+				<p style="font-size: 25px;color:red;">Giờ mở cửa: 8:00 giờ đến 16:00 giờ hàng ngày</p>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /* ====================FOOTER==================== */ -->
+    <div th:insert="user/footer :: copy"></div>
+    <script>
+    	document.querySelector('.nav__ ').classList.add('show__nav');
+    
+    </script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/js/all.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

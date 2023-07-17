@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				xmlsn:sec="htpp://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Quản lý</title>
+    <!-- plugins:css -->
+            <!-- Font Awesome -->    
+		<link
+		      rel="stylesheet"
+		      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+		      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+		      crossorigin="anonymous"
+		    />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/vendors/mdi/css/materialdesignicons.min.css}" />
+     <link rel="stylesheet" type="text/css" th:href="@{/assets/vendors/css/vendor.bundle.base.css}" />
+      <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+       <link rel="stylesheet" type="text/css" th:href="@{/assets/images/favicon.ico}" />
+<style>
+/*********************************
+## Pagination
+*********************************/
+.page-list{
+    color: rgb(122, 113, 113) !important;
+    margin-top: 30px;
+}
+.page-list .active a{
+    background: rgba(109, 81, 81) !important;
+    background-color: rgb(92, 170, 235) !important;
+}
+.page-list ul li a{
+   
+    color: rgb(32, 87, 136) !important;
+    padding: 6px 12px;
+    font-size: 1.1rem;
+}
+.page-list .disable{
+	color: rgb(212, 220, 227) !important;
+	
+}
+a{
+	text-decoration:none;
+}
+</style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href=""><img th:src="@{/image/logo3.png}" style="height: 100%;" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href=""><img th:src="@{/assets/images/logo-mini.svg}" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                  <img th:src="@{/assets/images/faces/face1.jpg}" alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black" th:text="${#authentication.getPrincipal().getHoTen()}">Tên ng đăng nhập</p>
+                  <span sec:authentication="principal.authorities">Roles</span>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:href="@{/logout}">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+              </div>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" th:href="@{/logout}">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <img th:src="@{/assets/images/faces/face1.jpg}" alt="profile">
+                  <span class="login-status online"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2" th:text="${#authentication.getPrincipal().getHoTen()}">David Grey. H</span>
+                  <span class="text-secondary text-small" sec:authentication="principal.authorities">Project Manager</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-link" th:href="@{/page_thongke}">
+                <span class="menu-title">Trang chủ</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-link" th:href="@{/page_sanpham}">
+                <span class="menu-title">Quản lý sản phẩm</span>
+                <i class="mdi mdi-format-color-fill menu-icon"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor')" class="nav-link" th:href="@{/page_loaisanpham}">
+                <span class="menu-title">Quản lý loại sản phẩm</span>
+                <i class="mdi mdi-format-color-fill menu-icon"></i>
+              </a>
+            </li>
+
+			<li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor')" class="nav-link" th:href="@{/page_hangsanxuat}">
+                <span class="menu-title">Quản lý hãng sản xuất</span>
+                <i class="mdi mdi-format-color-fill menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-link" th:href="@{/page_nhanvien}">
+                <span class="menu-title">Quản lý nhân viên</span>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-link" th:href="@{/page_khachhang}">
+                <span class="menu-title">Quản lý khách hàng</span>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-link" th:href="@{/page_hoadon}">
+                <span class="menu-title">Quản lý hóa đơn</span>
+                <i class="mdi mdi-bulletin-board menu-icon"></i>
+              </a>
+            </li>
+            <li sec:authorize="hasAnyAuthority('Admin')" class="nav-item">
+              <a class="nav-link" th:href="@{/page_phanquyen}">
+                <span class="menu-title">Quản lý phân quyền</span>
+                <i class="mdi mdi-account-network menu-icon"></i>
+              </a>
+            </li>
+            <li sec:authorize="hasAnyAuthority('Admin', 'Editor', 'User')" class="nav-item">
+              <a class="nav-link" th:href="@{/}">
+                <span class="menu-title">Trang bán hàng</span>
+                <i class="mdi mdi-cart-outline menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="main-panel">
+        	        <div layout:fragment="content" id="page-wrapper" style="min-height: 935px; background-color: white">
+        	
+        </div>
+          </div>	<!-- Main Content Start -->
+
+
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+<!--     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    endinject
+    Plugin js for this page
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    End plugin js for this page
+    inject:js
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    endinject
+    Custom js for this page
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script> -->
+    <!-- End custom js for this page -->
+    
+    <script th:src="@{/assets/vendors/js/vendor.bundle.base.js}"></script>
+        <script th:src="@{assets/vendors/chart.js/Chart.min.js}"></script>
+            <script th:src="@{/assets/js/off-canvas.js}"></script>
+                <script th:src="@{/assets/js/hoverable-collapse.js}"></script>
+                    <script th:src="@{/assets/js/misc.js}"></script>
+                    	<script th:src="@{/assets/js/dashboard.js}"></script>
+                    		<script th:src="@{/assets/js/todolist.js}"></script>
+
+                    
+  </body>
+</html>

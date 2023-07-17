@@ -1,0 +1,51 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Chi Tiết Hoá Dơn</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+<div class="content-wrapper">
+		 <div class="card">
+	          <div class="card-body">
+
+<div class="container">
+        <h2 class="mb-3">Cập Nhật Chi Tiết Hoá Dơn</h2>
+
+        <form action="#" th:action="@{/saveChiTietHoaDon}" th:object="${chitiethoadon}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{maHD}" />
+            
+			<label for="maSP"><strong>Sản phẩm:</strong></label>
+             <select th:field="*{maSP}" class="form-select"> 
+                <option th:each="SanPham : ${listSanPhams}"
+                    th:value="${SanPham.maSP}"
+                    th:text="${SanPham.tenSP}" ></option>
+            </select>
+            </br>
+
+			<label for="soLuong"><strong>Số lượng:</strong></label>
+            <input type="text" th:field="*{soLuong}" class="form-control mb-4 col-4">
+				
+			<label for="donGia"><strong>Đơn giá:</strong></label>
+            <input type="text" th:field="*{donGia}" class="form-control mb-4 col-4">
+     
+            <button type="submit" class="btn btn-info col-2">Cập nhật</button>
+        </form>
+        <hr>
+
+        <a th:href="@{/}"> Quay lại</a>
+    </div>
+</div>
+	          </div>
+          </div>
+</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="admin/layout">
+<title>Quản Lý Hoá Đơn</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+<body>
+<div layout:fragment="content">
+	<div class="container">
+        <h2 class="mb-3">Thêm Hoá Đơn</h2>
+
+        <form action="#" th:action="@{/saveHoaDon}" th:object="${hoadon}" method="POST">
+        
+      	  	<label for="shd"><strong>Số hoá đơn:</strong></label>
+            <input type="text" th:field="*{shd}" placeholder="Số Hoá Đơn" class="form-control mb-4 col-4">
+			<span style="color:red" th:if="${#fields.hasErrors('shd')}" th:errors="*{shd}">SHD Error</span>
+			</br>
+			
+			<div>
+        		<label for="ngayDat"><strong>Ngày đặt:</strong></label>
+        		<input type="date" th:field="*{ngayDat}" id="ngayDat"/>
+    		</div>
+    		</br>
+<!--     		<div>
+        		<label for="ngayGiao"><strong>Ngày giao:</strong></label>
+        		<input type="date" th:field="*{ngayGiao}" id="ngayGiao"/>
+    		</div> -->
+    		</br>
+            
+            <label for="diaChiNhan"><strong>Địa chỉ nhận:</strong></label>
+            <input type="text" th:field="*{diaChiNhan}" placeholder="Địa Chỉ Nhận" class="form-control mb-4 col-4">
+            <span style="color:red" th:if="${#fields.hasErrors('diaChiNhan')}" th:errors="*{diaChiNhan}">Dia Chi Nhan Error</span>
+            </br>
+            
+			<label for="tinhTrang"><strong>Tình trạng:</strong></label>
+          	<select th:field="*{tinhTrang}" class="form-select" aria-label="Default select example">
+				  <option value="Chưa xác nhận">Chưa xác nhận</option>
+				  <option value="Xác nhận">Xác nhận</option>
+				  <option value="Đang giao">Đang giao</option>
+				  <option value="Giao thành công">Giao thành công</option>
+			</select>
+            </br>
+            
+            <label for="maKH"><strong>Khách hàng:</strong></label>
+             <select th:field="*{maKH}" class="form-select"> 
+                <option th:each="KhachHang : ${listKhachHangs}"
+                    th:value="${KhachHang.maKH}"
+                    th:text="${KhachHang.hoTen}" ></option>
+            </select>
+            </br>
+
+            <button type="submit" class="btn btn-info col-2"> Thêm</button>
+        </form>
+        <hr>
+        <a th:href="@{/page_hoadon}"> Quay lại</a>
+    </div>
+</div>
+</body>
+</html>
